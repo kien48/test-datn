@@ -28,7 +28,22 @@ class DanhMucController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+
+            $dataCatelogue = $request->all();
+            DanhMuc::query()->create($dataCatelogue);
+            return response()->json([
+                'status' => true,
+                'status_code' => 200,
+                'message' => 'Thêm mới dữ liệu thành công',
+            ], 200);
+        }catch (\Exception $exception){
+            return response()->json([
+                'status' => false,
+                'status_code' => 500,
+                'message' => 'Thêm mới dữ liệu thất bại',
+            ], 500);
+        }
     }
 
     /**

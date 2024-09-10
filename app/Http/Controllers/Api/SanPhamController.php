@@ -11,9 +11,9 @@ use App\Models\MauSacBienThe;
 use App\Models\SanPham;
 use App\Models\The;
 use Exception;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class SanPhamController extends Controller
@@ -58,7 +58,7 @@ class SanPhamController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'ten_san_pham' => 'required|string|max:255',
-            'anh_san_pham' => 'required',
+            'anh_san_pham' => 'required|image',
             'mo_ta_ngan' => 'required|string|max:255',
             'noi_dung' => 'required|string',
             'id_danh_muc' => 'required|integer',
